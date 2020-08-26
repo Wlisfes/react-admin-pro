@@ -1,11 +1,17 @@
-import React, { FC } from 'react'
-import { Button } from 'antd'
+import React, { FC, Suspense } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Spin } from 'antd'
 import './style/App.less'
+import Home from './views/home/Home'
 
 const App: FC = () => (
-	<div className="App">
-		<Button type="primary">Click</Button>
-	</div>
+	<Suspense fallback={<Spin size="large"></Spin>}>
+		<Router>
+			<Switch>
+				<Route path="/" component={Home}></Route>
+			</Switch>
+		</Router>
+	</Suspense>
 )
 
 export default App
